@@ -1,0 +1,11 @@
+﻿@inherits UmbracoViewPage<INavigationBase>
+
+@if (Model.Keywords.Any())
+{
+    <meta name="Keywords" content="@string.Join(",",Model.Keywords)">
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.SeoMetaDescription))
+{
+    <meta name="Description" content="@Model.SeoMetaDescription">
+}

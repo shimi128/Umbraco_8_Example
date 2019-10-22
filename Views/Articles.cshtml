@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Articles>
+
+<ul>
+    @foreach (var item in Model.Children)
+    {
+        <li><a href="@item.Url">@item.Name</a></li>
+    }
+</ul>

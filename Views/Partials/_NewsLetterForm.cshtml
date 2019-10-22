@@ -1,0 +1,13 @@
+﻿@using WebApplicationShimi.Controllers
+@model WebApplicationShimi.Models.NewsLetterModel
+@using (Html.BeginUmbracoForm<HomeAController>("NewsLetterPost"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.EmailAddress)
+        @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control", type = "email" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+
+}

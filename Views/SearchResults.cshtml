@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<SearchResults>
+@{
+    List<IPublishedContent> results = null;
+    if (TempData.TryGetValue("Result", out var res))
+    {
+        results = res as List<IPublishedContent>;
+    }
+
+}
+<div>Search Results - Total @(results?.Count??0)</div>
+
+@if (results != null && results.Any())
+{
+    <div>
+        <ul>
+            @foreach (var result in results)
+            {
+                <li>
+                    <div><a href="@result.Url">@result.Name</a></div>
+                </li>
+            }
+        </ul>
+    </div>
+}
