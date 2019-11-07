@@ -60,6 +60,13 @@ namespace Umbraco.Web.PublishedModels
 		public string Caption => this.Value<string>("caption");
 
 		///<summary>
+		/// dgdf
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("dgdf")]
+		public IPublishedContent Dgdf => this.Value<IPublishedContent>("dgdf");
+
+		///<summary>
 		/// Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]

@@ -10,6 +10,7 @@ namespace WebApplicationShimi.Components
         {
             composition.Components().Append<ArticleComponent>();
             composition.RegisterUnique<ArticleIndexCreator>();
+            
         }
     }
 }

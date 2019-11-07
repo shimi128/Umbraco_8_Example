@@ -39,13 +39,20 @@
                     }
                 }
             </ul>
+
+            @*<div class="nav navbar-nav" style="margin-top: 12px">
+            @using (Html.BeginUmbracoForm<HomeAController>("Search", FormMethod.Get))
+            {
+                <input type="text" placeholder="Search" id="query" name="query" />
+                <button>@Umbraco.GetDictionaryValue("SearchBtn")</button>
+            }
+        </div>*@
             <div class="nav navbar-nav" style="margin-top: 12px">
-                @using (Html.BeginUmbracoForm<HomeAController>("Search",FormMethod.Get))
-                {
-                    <input type="text" placeholder="Search" id="query" name="query"/>
+                <form action="Search-Results" method="get">
+                    <input type="text" placeholder="Search" id="query" name="query" />
                     <button>@Umbraco.GetDictionaryValue("SearchBtn")</button>
-                }
-            </div>  
+                </form>
+            </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>

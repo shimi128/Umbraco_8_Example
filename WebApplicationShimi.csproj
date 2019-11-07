@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\uSync.8.2.4\build\uSync.props" Condition="Exists('packages\uSync.8.2.4\build\uSync.props')" />
   <Import Project="packages\UmbracoCms.8.1.4\build\UmbracoCms.props" Condition="Exists('packages\UmbracoCms.8.1.4\build\UmbracoCms.props')" />
   <Import Project="packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
@@ -372,6 +373,18 @@
     <Reference Include="Umbraco.Web.UI, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\UmbracoCms.Web.8.1.4\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
+    <Reference Include="uSync8.BackOffice, Version=8.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.BackOffice.Core.8.2.4\lib\net472\uSync8.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.Community.Contrib, Version=8.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.Community.Contrib.8.2.4\lib\net472\uSync8.Community.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.ContentEdition, Version=8.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.ContentEdition.8.2.4\lib\net472\uSync8.ContentEdition.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.Core, Version=8.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.Core.8.2.4\lib\net472\uSync8.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -400,6 +413,24 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.html" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="App_Plugins\uSync8\backoffice\uSync8\dashboard.html" />
+    <Content Include="App_Plugins\uSync8\backoffice\uSync8\uSyncDashboardController.js" />
+    <Content Include="App_Plugins\uSync8\changeDialog.html" />
+    <Content Include="App_Plugins\uSync8\changeDialogController.js" />
+    <Content Include="App_Plugins\uSync8\components\uSyncProgressView.html" />
+    <Content Include="App_Plugins\uSync8\components\usyncProgressViewComponent.js" />
+    <Content Include="App_Plugins\uSync8\components\uSyncReportView.html" />
+    <Content Include="App_Plugins\uSync8\components\uSyncReportViewComponent.js" />
+    <Content Include="App_Plugins\uSync8\lang\en-US.xml" />
+    <Content Include="App_Plugins\uSync8\settings\default.html" />
+    <Content Include="App_Plugins\uSync8\settings\expansion.html" />
+    <Content Include="App_Plugins\uSync8\settings\expansionController.js" />
+    <Content Include="App_Plugins\uSync8\settings\settings.html" />
+    <Content Include="App_Plugins\uSync8\settings\settingsController.js" />
+    <Content Include="App_Plugins\uSync8\settings\uSyncController.js" />
+    <Content Include="App_Plugins\uSync8\usync.css" />
+    <Content Include="App_Plugins\uSync8\uSyncHub.js" />
+    <Content Include="App_Plugins\uSync8\uSyncService.js" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -2156,6 +2187,9 @@
     <Content Include="config\HealthChecks.config" />
     <Content Include="config\ClientDependency.config" />
     <Content Include="config\BackOfficeTours\getting-started.json" />
+    <Content Include="config\uSync8.config" />
+    <Content Include="App_Plugins\uSync8\package.manifest" />
+    <Content Include="App_Plugins\uSync8\addons.json" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
@@ -2290,6 +2324,149 @@
     <Content Include="Views\Articles.cshtml" />
     <Content Include="Views\Partials\_NewsLetterForm.cshtml" />
     <Content Include="Views\SearchResults.cshtml" />
+    <Content Include="Views\Carusella.cshtml" />
+    <Content Include="uSync\v8\ContentTypes\article.config" />
+    <Content Include="uSync\v8\ContentTypes\articles.config" />
+    <Content Include="uSync\v8\ContentTypes\blog.config" />
+    <Content Include="uSync\v8\ContentTypes\blogpost.config" />
+    <Content Include="uSync\v8\ContentTypes\carusella.config" />
+    <Content Include="uSync\v8\ContentTypes\contact.config" />
+    <Content Include="uSync\v8\ContentTypes\contentbase.config" />
+    <Content Include="uSync\v8\ContentTypes\contentpage.config" />
+    <Content Include="uSync\v8\ContentTypes\feature.config" />
+    <Content Include="uSync\v8\ContentTypes\home.config" />
+    <Content Include="uSync\v8\ContentTypes\homea.config" />
+    <Content Include="uSync\v8\ContentTypes\navigationbase.config" />
+    <Content Include="uSync\v8\ContentTypes\people.config" />
+    <Content Include="uSync\v8\ContentTypes\person.config" />
+    <Content Include="uSync\v8\ContentTypes\product.config" />
+    <Content Include="uSync\v8\ContentTypes\products.config" />
+    <Content Include="uSync\v8\ContentTypes\searchresults.config" />
+    <Content Include="uSync\v8\Content\about-this-starter-kit.config" />
+    <Content Include="uSync\v8\Content\about-us.config" />
+    <Content Include="uSync\v8\Content\another-one.config" />
+    <Content Include="uSync\v8\Content\article1.config" />
+    <Content Include="uSync\v8\Content\article2.config" />
+    <Content Include="uSync\v8\Content\article3.config" />
+    <Content Include="uSync\v8\Content\article4.config" />
+    <Content Include="uSync\v8\Content\articles.config" />
+    <Content Include="uSync\v8\Content\banjo.config" />
+    <Content Include="uSync\v8\Content\biker-jacket.config" />
+    <Content Include="uSync\v8\Content\blog.config" />
+    <Content Include="uSync\v8\Content\bowling-ball.config" />
+    <Content Include="uSync\v8\Content\contact.config" />
+    <Content Include="uSync\v8\Content\home-a.config" />
+    <Content Include="uSync\v8\Content\home.config" />
+    <Content Include="uSync\v8\Content\jan-skovgaard.config" />
+    <Content Include="uSync\v8\Content\jeavon-leopold.config" />
+    <Content Include="uSync\v8\Content\jeroen-breuer.config" />
+    <Content Include="uSync\v8\Content\jumpsuit.config" />
+    <Content Include="uSync\v8\Content\knitted-west.config" />
+    <Content Include="uSync\v8\Content\lee-kelleher.config" />
+    <Content Include="uSync\v8\Content\matt-brailsford.config" />
+    <Content Include="uSync\v8\Content\my-blog-post.config" />
+    <Content Include="uSync\v8\Content\people.config" />
+    <Content Include="uSync\v8\Content\ping-pong-ball.config" />
+    <Content Include="uSync\v8\Content\products.config" />
+    <Content Include="uSync\v8\Content\search-results.config" />
+    <Content Include="uSync\v8\Content\tattoo.config" />
+    <Content Include="uSync\v8\Content\this-will-be-great.config" />
+    <Content Include="uSync\v8\Content\todo-list-for-the-starter-kit.config" />
+    <Content Include="uSync\v8\Content\unicorn.config" />
+    <Content Include="uSync\v8\DataTypes\ApprovedColor.config" />
+    <Content Include="uSync\v8\DataTypes\BlogHowManyPostsShouldBeShownSlider.config" />
+    <Content Include="uSync\v8\DataTypes\BlogpostCategoriesTags.config" />
+    <Content Include="uSync\v8\DataTypes\CarusellaNestedContent.config" />
+    <Content Include="uSync\v8\DataTypes\CheckboxList.config" />
+    <Content Include="uSync\v8\DataTypes\ContactContactIntroRichTextEditor.config" />
+    <Content Include="uSync\v8\DataTypes\ContactMapCoordinatesOpenStreetMaps.config" />
+    <Content Include="uSync\v8\DataTypes\ContactPickAContactFormFormPicker.config" />
+    <Content Include="uSync\v8\DataTypes\ContentBaseContentGridLayout.config" />
+    <Content Include="uSync\v8\DataTypes\ContentPicker.config" />
+    <Content Include="uSync\v8\DataTypes\DatePicker.config" />
+    <Content Include="uSync\v8\DataTypes\DatePickerWithTime.config" />
+    <Content Include="uSync\v8\DataTypes\Dropdown.config" />
+    <Content Include="uSync\v8\DataTypes\DropdownMultiple.config" />
+    <Content Include="uSync\v8\DataTypes\HomeCallToActionLinkContentPicker.config" />
+    <Content Include="uSync\v8\DataTypes\HomeColorThemeRadioButtonList.config" />
+    <Content Include="uSync\v8\DataTypes\HomeContentGridLayout.config" />
+    <Content Include="uSync\v8\DataTypes\HomeFontRadioButtonList.config" />
+    <Content Include="uSync\v8\DataTypes\HomeLogoMediaPicker.config" />
+    <Content Include="uSync\v8\DataTypes\ImageCropper.config" />
+    <Content Include="uSync\v8\DataTypes\LabelBigint.config" />
+    <Content Include="uSync\v8\DataTypes\LabelDatetime.config" />
+    <Content Include="uSync\v8\DataTypes\LabelDecimal.config" />
+    <Content Include="uSync\v8\DataTypes\LabelInteger.config" />
+    <Content Include="uSync\v8\DataTypes\LabelString.config" />
+    <Content Include="uSync\v8\DataTypes\LabelTime.config" />
+    <Content Include="uSync\v8\DataTypes\ListViewContent.config" />
+    <Content Include="uSync\v8\DataTypes\ListViewMedia.config" />
+    <Content Include="uSync\v8\DataTypes\ListViewMembers.config" />
+    <Content Include="uSync\v8\DataTypes\MediaPicker.config" />
+    <Content Include="uSync\v8\DataTypes\MemberPicker.config" />
+    <Content Include="uSync\v8\DataTypes\MultipleMediaPicker.config" />
+    <Content Include="uSync\v8\DataTypes\MultiURLPicker.config" />
+    <Content Include="uSync\v8\DataTypes\NavigationBaseKeywordsTags.config" />
+    <Content Include="uSync\v8\DataTypes\Numeric.config" />
+    <Content Include="uSync\v8\DataTypes\PeopleFeaturedPeopleMultinodeTreepicker.config" />
+    <Content Include="uSync\v8\DataTypes\PersonDepartmentTags.config" />
+    <Content Include="uSync\v8\DataTypes\PersonPhotoMediaPicker.config" />
+    <Content Include="uSync\v8\DataTypes\ProductCategoryTags.config" />
+    <Content Include="uSync\v8\DataTypes\ProductFeaturesNestedContent.config" />
+    <Content Include="uSync\v8\DataTypes\ProductPhotosMediaPicker.config" />
+    <Content Include="uSync\v8\DataTypes\ProductPriceDecimal.config" />
+    <Content Include="uSync\v8\DataTypes\ProductsDefaultCurrencyDropdownList.config" />
+    <Content Include="uSync\v8\DataTypes\ProductsFeaturedProductsMultinodeTreepicker.config" />
+    <Content Include="uSync\v8\DataTypes\Radiobox.config" />
+    <Content Include="uSync\v8\DataTypes\RichtextEditor.config" />
+    <Content Include="uSync\v8\DataTypes\Tags.config" />
+    <Content Include="uSync\v8\DataTypes\Textarea.config" />
+    <Content Include="uSync\v8\DataTypes\Textstring.config" />
+    <Content Include="uSync\v8\DataTypes\TrueFalse.config" />
+    <Content Include="uSync\v8\DataTypes\Upload.config" />
+    <Content Include="uSync\v8\Dictionary\searchbtn.config" />
+    <Content Include="uSync\v8\Domains\http-localhost-19512-he.config" />
+    <Content Include="uSync\v8\Domains\http-localhost-19512.config" />
+    <Content Include="uSync\v8\Languages\en-us.config" />
+    <Content Include="uSync\v8\Languages\he.config" />
+    <Content Include="uSync\v8\Macros\featuredProduct.config" />
+    <Content Include="uSync\v8\Macros\latestBlogposts.config" />
+    <Content Include="uSync\v8\MediaTypes\file.config" />
+    <Content Include="uSync\v8\MediaTypes\folder.config" />
+    <Content Include="uSync\v8\MediaTypes\image.config" />
+    <Content Include="uSync\v8\Media\banjo.config" />
+    <Content Include="uSync\v8\Media\biker-jacket.config" />
+    <Content Include="uSync\v8\Media\bowling-ball.config" />
+    <Content Include="uSync\v8\Media\design.config" />
+    <Content Include="uSync\v8\Media\jan-skovgaard.config" />
+    <Content Include="uSync\v8\Media\jeavon-leopold.config" />
+    <Content Include="uSync\v8\Media\jeroen-breuer.config" />
+    <Content Include="uSync\v8\Media\jumpsuit.config" />
+    <Content Include="uSync\v8\Media\knitted-west.config" />
+    <Content Include="uSync\v8\Media\lee-kelleher.config" />
+    <Content Include="uSync\v8\Media\matt-brailsford.config" />
+    <Content Include="uSync\v8\Media\people.config" />
+    <Content Include="uSync\v8\Media\ping-pong-ball.config" />
+    <Content Include="uSync\v8\Media\products.config" />
+    <Content Include="uSync\v8\Media\tattoo.config" />
+    <Content Include="uSync\v8\Media\umbraco-campari-meeting-room.config" />
+    <Content Include="uSync\v8\Media\unicorn.config" />
+    <Content Include="uSync\v8\MemberTypes\member.config" />
+    <Content Include="uSync\v8\Templates\article.config" />
+    <Content Include="uSync\v8\Templates\articles.config" />
+    <Content Include="uSync\v8\Templates\blog.config" />
+    <Content Include="uSync\v8\Templates\blogpost.config" />
+    <Content Include="uSync\v8\Templates\carusella.config" />
+    <Content Include="uSync\v8\Templates\contact.config" />
+    <Content Include="uSync\v8\Templates\contentpage.config" />
+    <Content Include="uSync\v8\Templates\home.config" />
+    <Content Include="uSync\v8\Templates\homea.config" />
+    <Content Include="uSync\v8\Templates\master.config" />
+    <Content Include="uSync\v8\Templates\people.config" />
+    <Content Include="uSync\v8\Templates\person.config" />
+    <Content Include="uSync\v8\Templates\product.config" />
+    <Content Include="uSync\v8\Templates\products.config" />
+    <Content Include="uSync\v8\Templates\searchresults.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2297,7 +2474,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Searchresults\" />
+  </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
@@ -2327,6 +2506,7 @@
     <Compile Include="App_Start\Components\ArticleComponent.cs" />
     <Compile Include="App_Start\Components\ArticleComposer.cs" />
     <Compile Include="Controllers\HomeAController.cs" />
+    <Compile Include="Controllers\SearchresultsController.cs" />
     <Compile Include="Indexer\ArticleIndexCreator.cs" />
     <Compile Include="Models\NewsLetterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2365,9 +2545,12 @@
     <Error Condition="!Exists('packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
     <Error Condition="!Exists('packages\UmbracoCms.8.1.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.8.1.4\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.8.1.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.8.1.4\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('packages\uSync.8.2.4\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uSync.8.2.4\build\uSync.props'))" />
+    <Error Condition="!Exists('packages\uSync.8.2.4\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uSync.8.2.4\build\uSync.targets'))" />
   </Target>
   <Import Project="packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
   <Import Project="packages\UmbracoCms.8.1.4\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.8.1.4\build\UmbracoCms.targets')" />
+  <Import Project="packages\uSync.8.2.4\build\uSync.targets" Condition="Exists('packages\uSync.8.2.4\build\uSync.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
